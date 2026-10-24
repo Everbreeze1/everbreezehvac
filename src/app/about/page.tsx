@@ -29,7 +29,7 @@ export default function AboutPage() {
                 "24/7 emergency service",
                 "SMUD participating contractor",
                 "Residential and commercial service",
-                site.licenseNumber ? `CA License #${site.licenseNumber}` : "Every major brand serviced",
+                site.yearsInBusiness ? `${site.yearsInBusiness} years serving the Sacramento area` : "Every major brand serviced",
               ]}
             />
           </div>

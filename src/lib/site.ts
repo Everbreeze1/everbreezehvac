@@ -9,12 +9,12 @@ export const site = {
   phone: "(866) 383-7273",
   phoneHref: "tel:+18663837273",
   email: "contact@everbreezehvac.com",
-  // TODO(Jon): fill these in. They are shown on the site and in Google's business data once set.
-  licenseNumber: null as string | null, // CSLB license number, e.g. "1234567"
-  streetAddress: null as string | null,
-  yearsInBusiness: null as number | null,
+  licenseNumber: "1114490" as string | null, // CSLB license, shown in the footer only
+  streetAddress: "8103 Polo Crosse Ave" as string | null,
+  yearsInBusiness: 4 as number | null,
   city: "Sacramento",
   region: "CA",
+  postalCode: "95829",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
     { days: "Emergencies", time: "24/7" },

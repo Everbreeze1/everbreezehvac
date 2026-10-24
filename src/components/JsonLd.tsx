@@ -22,6 +22,7 @@ export function localBusinessSchema() {
       ...(site.streetAddress ? { streetAddress: site.streetAddress } : {}),
       addressLocality: site.city,
       addressRegion: site.region,
+      postalCode: site.postalCode,
       addressCountry: "US",
     },
     areaServed: areas.map((a) => ({ "@type": "City", name: `${a.name}, CA` })),

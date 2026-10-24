@@ -24,6 +24,13 @@ export function Footer() {
               </a>
             </li>
           </ul>
+          {site.streetAddress && (
+            <p className="mt-4 text-sm">
+              {site.streetAddress}
+              <br />
+              {site.city}, {site.region} {site.postalCode}
+            </p>
+          )}
           {site.licenseNumber && <p className="mt-4 text-xs">CA License #{site.licenseNumber}</p>}
         </div>
         <div>

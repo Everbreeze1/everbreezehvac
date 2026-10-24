@@ -78,16 +78,28 @@ function fullName(lead: Lead) {
   return [lead.firstName, lead.lastName].filter(Boolean).join(" ");
 }
 
+// Accepts "Name <address>" or a bare address.
+function parseAddress(value: string) {
+  const m = value.match(/^\s*(.*?)\s*<([^>]+)>\s*$/);
+  return m ? { email: m[2], ...(m[1] ? { name: m[1].replace(/^"|"$/g, "") } : {}) } : { email: value.trim() };
+}
+
 async function sendEmail(to: string, subject: string, html: string, replyTo?: string) {
-  const key = process.env.RESEND_API_KEY;
+  const key = process.env.SENDGRID_API_KEY;
   const from = process.env.LEAD_FROM_EMAIL;
-  if (!key || !from) throw new Error("Resend is not configured");
-  const res = await fetch("https://api.resend.com/emails", {
+  if (!key || !from) throw new Error("SendGrid is not configured");
+  const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ from, to: [to], subject, html, ...(replyTo ? { reply_to: replyTo } : {}) }),
+    body: JSON.stringify({
+      personalizations: [{ to: [{ email: to }] }],
+      from: parseAddress(from),
+      ...(replyTo ? { reply_to: { email: replyTo } } : {}),
+      subject,
+      content: [{ type: "text/html", value: html }],
+    }),
   });
-  if (!res.ok) throw new Error(`Resend failed [${res.status}]: ${await res.text()}`);
+  if (!res.ok) throw new Error(`SendGrid failed [${res.status}]: ${await res.text()}`);
 }
 
 export async function sendLeadAlert(lead: Lead) {

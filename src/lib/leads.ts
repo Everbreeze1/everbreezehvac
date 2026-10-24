@@ -87,7 +87,10 @@ function parseAddress(value: string) {
 async function sendEmail(to: string, subject: string, html: string, replyTo?: string) {
   const key = process.env.SENDGRID_API_KEY;
   const from = process.env.LEAD_FROM_EMAIL;
-  if (!key || !from) throw new Error("SendGrid is not configured");
+  if (!key || !from) {
+    const missing = [!key && "SENDGRID_API_KEY", !from && "LEAD_FROM_EMAIL"].filter(Boolean).join(" and ");
+    throw new Error(`SendGrid is not configured: ${missing} not set for this ${process.env.VERCEL_ENV ?? "local"} deployment`);
+  }
   const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },

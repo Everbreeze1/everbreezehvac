@@ -86,16 +86,9 @@ function parseAddress(value: string) {
 
 async function sendEmail(to: string, subject: string, html: string, replyTo?: string) {
   const key = process.env.SENDGRID_API_KEY;
-  const from = process.env.LEAD_FROM_EMAIL;
-  if (!key || !from) {
-    const missing = [!key && "SENDGRID_API_KEY", !from && "LEAD_FROM_EMAIL"].filter(Boolean).join(" and ");
-    // Names only (never values), to see which settings this deployment actually received.
-    const names = Object.keys(process.env).filter((k) => /SENDGRID|LEAD_|SUPABASE_URL/i.test(k)).join(", ");
-    throw new Error(
-      `SendGrid is not configured: ${missing} not set for this ${process.env.VERCEL_ENV ?? "local"} deployment ` +
-        `(commit ${process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "?"}; related settings present: ${names || "none"})`,
-    );
-  }
+  // Defaults to the business address, which is a verified sender in SendGrid.
+  const from = process.env.LEAD_FROM_EMAIL || `${site.shortName} Heating and Air <${site.email}>`;
+  if (!key) throw new Error(`SendGrid is not configured: SENDGRID_API_KEY not set for this ${process.env.VERCEL_ENV ?? "local"} deployment`);
   const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },

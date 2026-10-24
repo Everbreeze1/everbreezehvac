@@ -89,7 +89,12 @@ async function sendEmail(to: string, subject: string, html: string, replyTo?: st
   const from = process.env.LEAD_FROM_EMAIL;
   if (!key || !from) {
     const missing = [!key && "SENDGRID_API_KEY", !from && "LEAD_FROM_EMAIL"].filter(Boolean).join(" and ");
-    throw new Error(`SendGrid is not configured: ${missing} not set for this ${process.env.VERCEL_ENV ?? "local"} deployment`);
+    // Names only (never values), to see which settings this deployment actually received.
+    const names = Object.keys(process.env).filter((k) => /SENDGRID|LEAD_|SUPABASE_URL/i.test(k)).join(", ");
+    throw new Error(
+      `SendGrid is not configured: ${missing} not set for this ${process.env.VERCEL_ENV ?? "local"} deployment ` +
+        `(commit ${process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "?"}; related settings present: ${names || "none"})`,
+    );
   }
   const res = await fetch("https://api.sendgrid.com/v3/mail/send", {
     method: "POST",

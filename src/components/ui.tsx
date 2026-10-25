@@ -13,18 +13,29 @@ export function ServiceIcon({ name, className }: { name: Service["icon"]; classN
 }
 
 export function ServiceCard({ service }: { service: Service }) {
+  const contain = service.imageFit === "contain";
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group reveal relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand/60 hover:shadow-xl"
+      className="group reveal relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl bg-navy-900 shadow-lg ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl sm:min-h-96"
     >
-      <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-dark transition group-hover:bg-brand group-hover:text-navy-950">
-        <ServiceIcon name={service.icon} className="h-6 w-6" />
-      </span>
-      <h3 className="mt-4 text-lg font-bold">{service.name}</h3>
-      <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">{service.short}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-dark">
-        Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
+      <Image
+        src={service.image}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className={`transition duration-500 group-hover:scale-105 ${contain ? "bg-white object-contain object-top p-6 pb-28" : "object-cover"}`}
+      />
+      <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-transparent" />
+      <span className="relative p-6">
+        <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand text-navy-950 shadow-lg">
+          <ServiceIcon name={service.icon} className="h-5 w-5" />
+        </span>
+        <h3 className="mt-3 text-xl font-extrabold text-white sm:text-2xl">{service.name}</h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-white/80 sm:text-base">{service.short}</p>
+        <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand">
+          Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+        </span>
       </span>
     </Link>
   );

@@ -8,6 +8,7 @@ export type Service = {
   image: string;
   imageAlt?: string;
   offer?: { label: string; amount: string };
+  imageFit?: "contain";
   signs: { title: string; signsLead: string; items: string[] };
   includes: string[];
   faqs: { q: string; a: string }[];
@@ -168,6 +169,7 @@ export const services: Service[] = [
     icon: "droplet",
     image: "/images/bradford-white-heat-pump-water-heater.webp",
     imageAlt: "Bradford White AeroTherm heat pump water heater",
+    imageFit: "contain",
     offer: { label: "SMUD rebate", amount: "Up to $4,000" },
     signs: {
       title: "Is it time for a heat pump water heater?",

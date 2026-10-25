@@ -133,29 +133,34 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-16 sm:py-24">
-        <div className="container-page">
+      <section className="relative overflow-hidden bg-navy-950 py-16 text-white sm:py-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(50rem_25rem_at_85%_0%,rgba(46,199,84,0.18),transparent),radial-gradient(40rem_25rem_at_0%_100%,rgba(27,64,121,0.5),transparent)]" />
+        <div className="container-page relative">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading eyebrow="Services" title="Everything your heating and cooling needs" intro="Repairs, replacements and maintenance for every major brand, for homes and businesses." />
-            <Link href="/services" className="inline-flex shrink-0 items-center gap-1 font-bold text-brand-dark hover:underline">
+            <div className="max-w-2xl">
+              <p className="eyebrow !text-brand">Services</p>
+              <h2 className="mt-2 text-3xl font-extrabold sm:text-5xl">Everything your heating and cooling needs</h2>
+              <p className="mt-4 text-lg text-white/75">Repairs, replacements and maintenance for every major brand, for homes and businesses.</p>
+            </div>
+            <Link href="/services" className="btn-ghost-light shrink-0">
               All services <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <ServiceCard key={s.slug} service={s} />
             ))}
             <BookButton
               service="Not sure"
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-navy-900 p-6 text-left text-white transition hover:-translate-y-0.5 hover:shadow-xl"
+              className="group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl bg-brand p-6 text-left text-navy-950 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl sm:min-h-96"
             >
-              <span aria-hidden className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-brand/25 blur-2xl" />
+              <span aria-hidden className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/30 blur-3xl" />
               <span className="relative block">
-                <span className="block font-display text-lg font-bold">Not sure what you need?</span>
-                <span className="mt-1.5 block text-sm leading-relaxed text-white/75">Describe the problem and we&apos;ll figure it out together.</span>
+                <span className="block font-display text-2xl font-extrabold sm:text-3xl">Not sure what you need?</span>
+                <span className="mt-2 block leading-relaxed text-navy-950/80">Tell us what&apos;s going on and we&apos;ll figure it out together. You get a clear price before any work starts.</span>
               </span>
-              <span className="relative mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand">
-                Book a visit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
+              <span className="relative mt-5 inline-flex items-center gap-1 self-start rounded-lg bg-navy-950 px-5 py-3 font-display text-sm font-bold text-white">
+                Book a visit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
               </span>
             </BookButton>
           </div>

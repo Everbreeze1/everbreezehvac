@@ -29,6 +29,7 @@ export const site = {
     facebook: null as string | null,
     instagram: "https://www.instagram.com/everbreezeheatingandair/" as string | null,
     tiktok: "https://www.tiktok.com/@everbreezehvac" as string | null,
+    linkedin: "https://www.linkedin.com/company/everbreezeheatingandair/" as string | null,
     yelp: null as string | null,
     nextdoor: null as string | null,
   },

@@ -37,6 +37,7 @@ export function Footer() {
                 ["Facebook", site.social.facebook],
                 ["Instagram", site.social.instagram],
                 ["TikTok", site.social.tiktok],
+                ["LinkedIn", site.social.linkedin],
                 ["Yelp", site.social.yelp],
                 ["Nextdoor", site.social.nextdoor],
               ] as const

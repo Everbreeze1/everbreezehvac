@@ -1,10 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
-import Script from "next/script";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { MobileCallBar } from "@/components/MobileCallBar";
-import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -34,18 +29,7 @@ export const viewport: Viewport = { themeColor: "#0b1f3a" };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
-      <body className="pb-16 lg:pb-0">
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <MobileCallBar />
-        <JsonLd data={localBusinessSchema()} />
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.analytics.ga4}`} strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${site.analytics.ga4}');gtag('config','${site.analytics.googleAds}');
-document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="tel:"]');if(a){gtag('event','phone_click',{link_url:a.href});}});`}
-        </Script>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, BadgeDollarSign, Clock, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, Clock, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { Accreditations } from "@/components/Accreditations";
 import { BookButton } from "@/components/BookButton";
 import { RatingBadge, Reviews } from "@/components/Reviews";
 import { CheckList, CtaBand, FaqList, LogoStrip, ServiceCard } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, faqSchema } from "@/components/JsonLd";
+import { areas } from "@/lib/areas";
+import { getServiceGuide } from "@/lib/service-guides";
 import { getService, services } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -30,7 +32,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: service.metaTitle,
     description: service.metaDescription,
     alternates: { canonical: `/services/${service.slug}` },
-    openGraph: { title: service.metaTitle, description: service.metaDescription, url: `/services/${service.slug}` },
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      title: service.metaTitle,
+      description: service.metaDescription,
+      url: `/services/${service.slug}`,
+    },
   };
 }
 
@@ -38,12 +46,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = getService((await params).slug);
   if (!service) notFound();
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const guide = getServiceGuide(service.slug);
+  const faqs = [...service.faqs, ...(guide?.faqs ?? [])];
+  const keyword = guide?.keyword ?? service.name;
 
   return (
     <>
       <JsonLd
         data={[
-          faqSchema(service.faqs),
+          faqSchema(faqs),
           breadcrumbSchema([
             { name: "Home", path: "/" },
             { name: "Services", path: "/services" },
@@ -52,10 +63,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           {
             "@context": "https://schema.org",
             "@type": "Service",
+            "@id": `${site.url}/services/${service.slug}#service`,
             name: service.name,
+            serviceType: service.name,
             description: service.metaDescription,
+            url: `${site.url}/services/${service.slug}`,
+            image: `${site.url}${service.image}`,
             provider: { "@id": `${site.url}/#business` },
-            areaServed: "Sacramento, CA",
+            areaServed: areas.map((a) => ({ "@type": "City", name: `${a.name}, CA` })),
           },
         ]}
       />
@@ -137,6 +152,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      {guide && (
+        <section className="border-t border-line py-16 sm:py-20">
+          <div className="container-page max-w-3xl">
+            {guide.sections.map((sec) => (
+              <div key={sec.heading} className="mt-10 first:mt-0">
+                <h2 className="text-2xl font-extrabold sm:text-3xl">{sec.heading}</h2>
+                {sec.paragraphs.map((para) => (
+                  <p key={para.slice(0, 40)} className="mt-4 text-lg leading-relaxed text-muted">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="bg-surface py-16 sm:py-20">
         <div className="container-page grid gap-12 lg:grid-cols-2">
           <div>
@@ -155,7 +187,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div>
             <h2 className="text-3xl font-extrabold">Common questions</h2>
             <div className="mt-6">
-              <FaqList faqs={service.faqs} />
+              <FaqList faqs={faqs} />
             </div>
           </div>
         </div>
@@ -167,6 +199,30 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="container-page">
           <p className="mb-6 text-center text-sm font-semibold text-muted">We work on every major brand</p>
           <LogoStrip />
+        </div>
+      </section>
+
+      <section className="border-t border-line py-14">
+        <div className="container-page">
+          <h2 className="text-2xl font-extrabold">{service.name} near you</h2>
+          <p className="mt-2 text-muted">
+            We provide {keyword} across the greater Sacramento area, including:
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {areas.map((a) => (
+              <li key={a.slug}>
+                <Link
+                  href={`/service-areas/${a.slug}`}
+                  className="flex items-center gap-2 rounded-xl border border-line px-4 py-3 font-semibold hover:border-navy-700"
+                >
+                  <MapPin className="h-4 w-4 shrink-0 text-brand-dark" aria-hidden />
+                  <span>
+                    {keyword.charAt(0).toUpperCase() + keyword.slice(1)} in {a.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

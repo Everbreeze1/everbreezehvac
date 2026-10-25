@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
+import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Droplets, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
 import type { Service } from "@/lib/services";
 import { brands, site } from "@/lib/site";
 
-const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2 };
+const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2, droplet: Droplets };
 
 export function ServiceIcon({ name, className }: { name: Service["icon"]; className?: string }) {
   const Icon = icons[name];

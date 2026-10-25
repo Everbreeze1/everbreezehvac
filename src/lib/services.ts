@@ -4,7 +4,7 @@ export type Service = {
   short: string; // one line for cards
   headline: string;
   intro: string;
-  icon: "snowflake" | "flame" | "leaf" | "wrench" | "calendar" | "wind" | "building";
+  icon: "snowflake" | "flame" | "leaf" | "wrench" | "calendar" | "wind" | "building" | "droplet";
   image: string;
   signs: { title: string; signsLead: string; items: string[] };
   includes: string[];
@@ -154,6 +154,53 @@ export const services: Service[] = [
     metaTitle: "Heat Pump Installation Sacramento | SMUD Rebates | Everbreeze",
     metaDescription:
       "Heat pump installation in Sacramento from a SMUD participating contractor. We handle the rebate paperwork. Free estimates and financing available.",
+  },
+  {
+    slug: "heat-pump-water-heaters",
+    name: "Heat Pump Water Heaters",
+    short: "Efficient heat pump water heater installs, with up to $4,000 back from SMUD.",
+    headline: "Heat pump water heaters, installed right, with SMUD rebates",
+    intro:
+      "A heat pump water heater pulls heat from the air around it instead of burning gas, so it uses a fraction of the energy of a standard tank. We size it for your household, handle the electrical and venting details, and file the SMUD rebate paperwork for you.",
+    icon: "droplet",
+    image: "/images/heat-pump-water-heater.webp",
+    signs: {
+      title: "Is it time for a heat pump water heater?",
+      signsLead: "It's a great fit if:",
+      items: [
+        "Your water heater is 10 or more years old",
+        "The tank is leaking, rusty or making popping sounds",
+        "You run out of hot water more often than you used to",
+        "You want to move your home off gas",
+        "Your gas or electric bill keeps climbing",
+        "You're a SMUD customer and want to use the rebate",
+      ],
+    },
+    includes: [
+      "Free in-home assessment and sizing",
+      "Gas-to-electric conversions and electric tank replacements",
+      "Electrical circuit, condensate drain and venting handled",
+      "SMUD rebate paperwork filed for you",
+      "Permits, installation and final inspection",
+      "Old tank removal and disposal",
+    ],
+    faqs: [
+      {
+        q: "How much is the SMUD rebate for a heat pump water heater?",
+        a: "SMUD currently offers up to $4,000 when you replace a gas water heater with a heat pump water heater, and $1,000 when you replace an electric water heater. Amounts are set by SMUD and can change, so we confirm what you qualify for at your estimate.",
+      },
+      {
+        q: "Will a heat pump water heater keep up with my family?",
+        a: "Yes, when it's sized correctly. Most homes do well with a 50 to 80 gallon unit, and many models have a backup element for high-demand days. We'll recommend a size based on how many people live in your home.",
+      },
+      {
+        q: "Where does it go?",
+        a: "Usually in the same spot as your current water heater, most often the garage. It needs some air space around it and a drain for condensation, which we take care of during the install.",
+      },
+    ],
+    metaTitle: "Heat Pump Water Heater Installation Sacramento | SMUD Rebates | Everbreeze",
+    metaDescription:
+      "Heat pump water heater installation in Sacramento with up to $4,000 in SMUD rebates for gas-to-electric conversions. We handle the paperwork. Book a free estimate.",
   },
   {
     slug: "installation",

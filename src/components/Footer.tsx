@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { Accreditations } from "@/components/Accreditations";
@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="bg-navy-950 text-white/75">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Image src="/images/logo-white.png" alt={site.name} width={800} height={172} className="h-10 w-auto" />
+          <Logo tone="light" />
           <p className="mt-4 text-sm leading-relaxed">{site.tagline}</p>
           <ul className="mt-5 space-y-2 text-sm">
             <li>

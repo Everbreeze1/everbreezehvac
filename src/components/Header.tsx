@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { Phone, ShieldCheck, Clock } from "lucide-react";
 import { nav, site } from "@/lib/site";
@@ -25,7 +25,7 @@ export function Header() {
       </div>
       <div className="container-page flex h-16 items-center justify-between gap-4 lg:h-20">
         <Link href="/" className="shrink-0" aria-label={`${site.name} home`}>
-          <Image src="/images/logo.png" alt={site.name} width={800} height={172} priority className="h-9 w-auto lg:h-11" />
+          <Logo />
         </Link>
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-7 text-[15px] font-semibold text-ink">

@@ -73,7 +73,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </Link>
             </div>
           </div>
-          <QuoteForm defaultService={service.name} title={`Get ${service.name.toLowerCase()} help`} />
+          <QuoteForm defaultService={service.name} title={`Ask about ${service.name}`} />
         </div>
       </section>
 

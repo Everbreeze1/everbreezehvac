@@ -34,3 +34,8 @@ export const rebateTiers = [
   { amount: "$2,000", title: "Gas to electric, two-stage", text: "Replace gas heat with a two-stage heat pump that meets SMUD's 15.2 SEER2 minimum." },
   { amount: "$1,000", title: "Electric to electric upgrade", text: "Replace an existing electric heat pump with a qualifying multi-stage system." },
 ];
+
+export const waterHeaterRebates = [
+  { amount: "$4,000", title: "Gas to heat pump water heater", text: "Replace a gas water heater with a qualifying heat pump water heater." },
+  { amount: "$1,000", title: "Electric to heat pump water heater", text: "Replace an existing electric water heater with a heat pump model." },
+];

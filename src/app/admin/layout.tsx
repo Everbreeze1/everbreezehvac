@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Leads | Everbreeze Heating And Air®",
@@ -11,7 +11,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-surface">
       <header className="border-b border-line bg-white">
         <div className="container-page flex h-16 items-center gap-3">
-          <Image src="/images/logo.png" alt="Everbreeze" width={800} height={172} className="h-8 w-auto" priority />
+          <Logo />
           <span className="font-display text-sm font-bold tracking-wider text-muted uppercase">Leads</span>
         </div>
       </header>

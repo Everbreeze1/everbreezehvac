@@ -3,7 +3,7 @@ export const site = {
   name: "Everbreeze Heating And Air®",
   shortName: "Everbreeze",
   url: "https://www.everbreezehvac.com",
-  tagline: "Sacramento heating & air conditioning, done right the first time.",
+  tagline: "Your Indoor Weather Experts",
   description:
     "Licensed Sacramento HVAC contractor for AC repair, furnace and heat pump service, new system installs and maintenance. SMUD participating contractor. Call or book online.",
   phone: "(866) 383-7273",

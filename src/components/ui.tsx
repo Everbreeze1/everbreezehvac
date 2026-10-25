@@ -36,7 +36,7 @@ export function CheckList({ items, className = "" }: { items: string[]; classNam
       {items.map((item) => (
         <li key={item} className="flex gap-3">
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-dark" aria-hidden />
-          <span className="text-[15px] leading-relaxed">{item}</span>
+          <span className="text-[0.9375rem] leading-relaxed">{item}</span>
         </li>
       ))}
     </ul>

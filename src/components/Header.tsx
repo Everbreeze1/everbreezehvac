@@ -28,8 +28,8 @@ export function Header() {
         <Link href="/" className="shrink-0" aria-label={`${site.name} home`}>
           <Logo />
         </Link>
-        <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-[15px] font-semibold text-ink">
+        <nav aria-label="Main" className="hidden xl:block">
+          <ul className="flex items-center gap-4 text-[0.95rem] font-semibold whitespace-nowrap text-ink 2xl:gap-8">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-brand-dark">
@@ -40,16 +40,16 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-          <a href={site.phoneHref} className="hidden items-center gap-2 font-display font-bold text-ink sm:inline-flex">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-50 text-brand-dark">
+          <a href={site.phoneHref} className="hidden items-center gap-2 font-display font-bold whitespace-nowrap text-ink sm:inline-flex">
+            <span className="grid h-9 w-9 place-items-center xl:hidden 2xl:grid rounded-full bg-brand-50 text-brand-dark">
               <Phone className="h-4 w-4" aria-hidden />
             </span>
             <span className="leading-tight">
-              <span className="block text-[11px] font-semibold tracking-wide text-muted uppercase">Call 24/7</span>
+              <span className="block text-[0.6875rem] font-semibold tracking-wide text-muted uppercase xl:hidden 2xl:block">Call 24/7</span>
               {site.phone}
             </span>
           </a>
-          <BookButton className="btn-primary ml-2 hidden !py-2.5 sm:inline-flex">Book online</BookButton>
+          <BookButton className="btn-primary ml-2 hidden !py-2.5 whitespace-nowrap sm:inline-flex">Book online</BookButton>
           <MobileMenu />
         </div>
       </div>

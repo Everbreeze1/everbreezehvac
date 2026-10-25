@@ -14,7 +14,7 @@ export function MobileMenu() {
   useEffect(() => setOpen(false), [pathname]);
 
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
@@ -29,7 +29,7 @@ export function MobileMenu() {
         <div id="mobile-menu" className="absolute inset-x-0 top-full border-t border-line bg-white shadow-lg">
           <nav aria-label="Mobile" className="container-page py-3">
             <ul className="divide-y divide-line">
-              {[{ label: "Home", href: "/" }, ...nav].map((item) => (
+              {nav.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="block py-3 text-base font-semibold text-ink">
                     {item.label}

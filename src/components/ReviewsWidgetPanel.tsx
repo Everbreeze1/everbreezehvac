@@ -65,7 +65,7 @@ export function ReviewsWidgetPanel({ data, url }: { data: GoogleReviews; url: st
           <span className="flex items-center gap-1 text-sm font-bold">
             {data.rating.toFixed(1)} <span className="flex">{stars(data.rating, "h-3.5 w-3.5")}</span>
           </span>
-          <span className="block text-[11px] text-muted">{data.count} Google reviews</span>
+          <span className="block text-[0.6875rem] text-muted">{data.count} Google reviews</span>
         </span>
       </button>
     </div>

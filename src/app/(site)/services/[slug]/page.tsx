@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
             {service.offer ? (
               <div className="absolute -bottom-1 left-4 rounded-xl bg-brand px-5 py-3 text-navy-950 shadow-xl sm:left-6 lg:-bottom-6">
-                <p className="text-[11px] font-bold tracking-wider uppercase">{service.offer.label}</p>
+                <p className="text-[0.6875rem] font-bold tracking-wider uppercase">{service.offer.label}</p>
                 <p className="font-display text-2xl font-extrabold">{service.offer.amount}</p>
               </div>
             ) : (

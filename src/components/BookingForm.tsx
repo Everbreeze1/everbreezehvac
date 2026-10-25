@@ -187,7 +187,7 @@ export function BookingForm({ defaultService }: { defaultService?: string }) {
                   }}
                   className="sr-only"
                 />
-                <span className={`text-[11px] font-bold tracking-wider uppercase ${on ? "text-brand" : "text-muted"}`}>
+                <span className={`text-[0.6875rem] font-bold tracking-wider uppercase ${on ? "text-brand" : "text-muted"}`}>
                   {isToday ? "Today" : d.toLocaleDateString("en-US", { weekday: "short" })}
                 </span>
                 <span className="font-display text-2xl leading-tight font-extrabold">{d.getDate()}</span>
@@ -215,7 +215,7 @@ export function BookingForm({ defaultService }: { defaultService?: string }) {
                   <input type="radio" name="window" value={w.label} checked={on} onChange={() => setArrival(w.label)} className="sr-only" />
                   <Icon className={`h-5 w-5 shrink-0 ${on ? "text-brand-dark" : "text-muted"}`} aria-hidden />
                   <span className="min-w-0">
-                    <span className="block text-[11px] font-bold tracking-wider text-muted uppercase">{label}</span>
+                    <span className="block text-[0.6875rem] font-bold tracking-wider text-muted uppercase">{label}</span>
                     <span className="block text-sm font-semibold whitespace-nowrap">{shortWindow(w.start)}</span>
                   </span>
                 </label>

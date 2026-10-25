@@ -23,6 +23,18 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Scale the whole site up on large screens so text stays easy to read
+     and the layout fills the window instead of leaving wide white margins. */
+  @media (min-width: 1280px) {
+    html {
+      font-size: 112.5%;
+    }
+  }
+  @media (min-width: 1600px) {
+    html {
+      font-size: 125%;
+    }
+  }
   body {
     @apply bg-white font-sans text-ink antialiased;
   }
@@ -38,7 +50,7 @@
 }
 
 @utility container-page {
-  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
 @utility btn {

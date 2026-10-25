@@ -59,7 +59,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
               <Image src={post.featuredImage} alt="" fill priority sizes="(min-width: 1024px) 48rem, 100vw" className="object-cover" />
             </div>
-            <div className="prose-blog mt-10 text-[17px]" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="prose-blog mt-10 text-[1.0625rem]" dangerouslySetInnerHTML={{ __html: post.content }} />
           </div>
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <QuoteForm title="Need a hand?" subtitle="Our technicians can take care of it. Leave your number and we'll call you." />

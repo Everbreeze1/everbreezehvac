@@ -28,6 +28,7 @@ export const site = {
     googleBusiness: "https://www.google.com/search?q=Everbreeze+Heating+and+Air&stick=H4sIAAAAAAAA_-NgU1I1qLAwsExMNkxMSrMwSTFLtTC2MqhIMTJIsjQF8i1TTVLNLZMXsUq5lqUWJRWlplalKnikJpZk5qUrJOalKDhmFgEA62yb3EYAAAA" as string | null, // Google Business Profile
     facebook: null as string | null,
     instagram: "https://www.instagram.com/everbreezeheatingandair/" as string | null,
+    tiktok: "https://www.tiktok.com/@everbreezehvac" as string | null,
     yelp: null as string | null,
     nextdoor: null as string | null,
   },

@@ -38,7 +38,7 @@ export function QuoteForm({ defaultService, title = "Get help today", subtitle }
   return (
     <form onSubmit={onSubmit} className="rounded-2xl bg-white p-5 text-ink shadow-xl ring-1 ring-line sm:p-7">
       <h2 className="text-xl font-extrabold sm:text-2xl">{title}</h2>
-      <p className="mt-1 text-sm text-muted">{subtitle ?? "Tell us what's going on. We'll call you back fast, usually within the hour during business hours."}</p>
+      <p className="mt-1 text-sm text-muted">{subtitle ?? "Tell us what's going on. We'll call you back the same business day."}</p>
       <div className="mt-5 grid gap-3">
         <div>
           <label htmlFor="q-name" className="label">Your name</label>

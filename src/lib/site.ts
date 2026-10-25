@@ -10,7 +10,7 @@ export const site = {
   phoneHref: "tel:+18663837273",
   email: "contact@everbreezehvac.com",
   licenseNumber: "1114490" as string | null, // CSLB license, shown in the footer only
-  streetAddress: "8103 Polo Crosse Ave" as string | null,
+  streetAddress: null as string | null, // Jon: keep the street address off the site
   yearsInBusiness: 4 as number | null,
   city: "Sacramento",
   region: "CA",

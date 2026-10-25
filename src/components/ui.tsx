@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
 import type { Service } from "@/lib/services";
-import { brands, clients, site } from "@/lib/site";
+import { brands, site } from "@/lib/site";
 
 const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2 };
 
@@ -96,11 +96,10 @@ export function CtaBand({ title = "Need heating or cooling help?", text = "Talk 
   );
 }
 
-export function LogoStrip({ kind }: { kind: "clients" | "brands" }) {
-  const items = kind === "clients" ? clients : brands;
+export function LogoStrip() {
   return (
     <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-      {items.map((it) => (
+      {brands.map((it) => (
         <li key={it.name} className="relative h-10 w-28 opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0">
           <Image src={it.logo} alt={it.name} fill sizes="112px" className="object-contain" />
         </li>

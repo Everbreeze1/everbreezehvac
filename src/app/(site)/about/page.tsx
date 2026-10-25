@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CheckList, CtaBand, LogoStrip, PageHero, SectionHeading } from "@/components/ui";
+import { Accreditations } from "@/components/Accreditations";
+import { CheckList, CtaBand, PageHero, SectionHeading } from "@/components/ui";
 import { site, workPhotos } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -33,12 +34,10 @@ export default function AboutPage() {
               ]}
             />
           </div>
-          <div className="rounded-2xl bg-surface p-8">
-            <h2 className="text-xl font-extrabold">Trusted by local businesses</h2>
-            <p className="mt-2 text-sm text-muted">Property managers, businesses and public agencies rely on us for their heating and cooling.</p>
-            <div className="mt-8">
-              <LogoStrip kind="clients" />
-            </div>
+          <div className="self-start rounded-2xl bg-surface p-8">
+            <h2 className="text-xl font-extrabold">Licensed and accredited</h2>
+            <p className="mt-2 text-sm text-muted">BBB accredited business and SMUD participating contractor, licensed in California.</p>
+            <Accreditations size="lg" className="mt-8" />
           </div>
         </div>
       </section>

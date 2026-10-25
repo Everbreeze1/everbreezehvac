@@ -119,7 +119,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <section className="py-14">
         <div className="container-page">
           <p className="mb-6 text-center text-sm font-semibold text-muted">We work on every major brand</p>
-          <LogoStrip kind="brands" />
+          <LogoStrip />
         </div>
       </section>
 

@@ -131,14 +131,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Clients */}
-      <section className="bg-surface py-10">
-        <div className="container-page">
-          <p className="mb-6 text-center text-xs font-bold tracking-[0.16em] text-muted uppercase">Trusted by Sacramento homeowners, property managers and businesses</p>
-          <LogoStrip kind="clients" />
-        </div>
-      </section>
-
       {/* Services */}
       <section className="py-16 sm:py-24">
         <div className="container-page">
@@ -304,7 +296,7 @@ export default function Home() {
           <div>
             <SectionHeading eyebrow="Brands" title="We service every major brand" />
             <div className="mt-8 rounded-2xl border border-line p-6">
-              <LogoStrip kind="brands" />
+              <LogoStrip />
             </div>
           </div>
         </div>

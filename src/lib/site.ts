@@ -40,15 +40,6 @@ export const nav = [
   { label: "Blog", href: "/blog" },
 ];
 
-export const clients = [
-  { name: "FedEx", logo: "/images/clients/fedex.webp" },
-  { name: "CBRE", logo: "/images/clients/cbre.webp" },
-  { name: "Sacramento County", logo: "/images/clients/sac-county.webp" },
-  { name: "Paradies Lagardère", logo: "/images/clients/paradies-lagardere.webp" },
-  { name: "Evolve", logo: "/images/clients/evolve.webp" },
-  { name: "Doorstead", logo: "/images/clients/doorstead.webp" },
-];
-
 export const brands = [
   { name: "Trane", logo: "/images/brands/trane.svg" },
   { name: "Carrier", logo: "/images/brands/carrier.webp" },

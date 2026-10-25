@@ -25,7 +25,7 @@ export const site = {
   bbbUrl: "https://www.bbb.org/search?find_text=Everbreeze%20Heating%20and%20Air&find_loc=Sacramento%2C%20CA",
   // Profiles Google uses to connect the site to the business. TODO(Jon): paste the real links.
   social: {
-    googleBusiness: null as string | null, // the "Share" link from your Google Business Profile
+    googleBusiness: "https://www.google.com/search?q=Everbreeze+Heating+and+Air&stick=H4sIAAAAAAAA_-NgU1I1qLAwsExMNkxMSrMwSTFLtTC2MqhIMTJIsjQF8i1TTVLNLZMXsUq5lqUWJRWlplalKnikJpZk5qUrJOalKDhmFgEA62yb3EYAAAA" as string | null, // Google Business Profile
     facebook: null as string | null,
     instagram: null as string | null,
     yelp: null as string | null,

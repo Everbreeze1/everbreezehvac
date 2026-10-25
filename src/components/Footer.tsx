@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
+import { Accreditations } from "@/components/Accreditations";
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { areas } from "@/lib/areas";
@@ -28,6 +29,7 @@ export function Footer() {
             {site.city}, {site.region} {site.postalCode}
           </p>
           {site.licenseNumber && <p className="mt-4 text-xs">CA License #{site.licenseNumber}</p>}
+          <Accreditations size="sm" className="mt-6" />
         </div>
         <div>
           <h2 className="font-display text-sm font-bold tracking-wider text-brand uppercase">Services</h2>

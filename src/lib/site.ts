@@ -17,9 +17,12 @@ export const site = {
   postalCode: "95829",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
+    { days: "Saturday", time: "9:00 AM – 4:00 PM" },
     { days: "Emergencies", time: "24/7" },
   ],
   financingUrl: "https://www.avvance.com/flexible-financing.html?id=783171c6",
+  // TODO(Jon): swap in the direct link to the BBB profile page.
+  bbbUrl: "https://www.bbb.org/search?find_text=Everbreeze%20Heating%20and%20Air&find_loc=Sacramento%2C%20CA",
   googleReviewsUrl: "https://www.google.com/search?q=Everbreeze+Heating+and+Air+Reviews",
   analytics: {
     ga4: "G-B2NML1G80R",

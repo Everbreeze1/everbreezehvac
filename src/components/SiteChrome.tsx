@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
+import { ReviewsWidget } from "@/components/ReviewsWidget";
 import { site } from "@/lib/site";
 
 // Public site chrome and analytics. The /admin pages sit outside this group so they get neither.
@@ -13,6 +14,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <main id="main">{children}</main>
       <Footer />
       <MobileCallBar />
+      <ReviewsWidget />
       <JsonLd data={localBusinessSchema()} />
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.analytics.ga4}`} strategy="afterInteractive" />
       <Script id="gtag-init" strategy="afterInteractive">

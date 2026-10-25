@@ -15,7 +15,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand hover:shadow-lg"
+      className="group reveal relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand/60 hover:shadow-xl"
     >
       <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-dark transition group-hover:bg-brand group-hover:text-navy-950">
         <ServiceIcon name={service.icon} className="h-6 w-6" />
@@ -74,18 +74,21 @@ export function PageHero({ eyebrow, title, intro, children }: { eyebrow?: string
 
 export function CtaBand({ title = "Need heating or cooling help?", text = "Talk to a real person. We'll get you on the schedule fast." }: { title?: string; text?: string }) {
   return (
-    <section className="bg-brand">
-      <div className="container-page flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
+    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
+      <Image src="/images/sacramento.webp" alt="" fill sizes="100vw" className="-z-10 object-cover opacity-20" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(40rem_20rem_at_100%_50%,rgba(46,199,84,0.30),transparent)]" />
+      <div className="container-page flex flex-col items-start justify-between gap-8 py-14 sm:py-16 md:flex-row md:items-center">
         <div>
-          <h2 className="text-2xl font-extrabold text-navy-950 sm:text-3xl">{title}</h2>
-          <p className="mt-2 text-navy-900/80">{text}</p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">{title}</h2>
+          <p className="mt-2 text-lg text-white/80">{text}</p>
+          <p className="mt-3 text-sm text-white/60">Mon–Fri 8–6 · Sat 9–4 · Emergencies 24/7</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <a href={site.phoneHref} className="btn-dark !px-6">
-            <Phone className="h-4 w-4" aria-hidden /> {site.phone}
+          <a href={site.phoneHref} className="btn-primary !px-7 !py-4 text-base shadow-lg shadow-brand/25">
+            <Phone className="h-5 w-5" aria-hidden /> {site.phone}
           </a>
-          <Link href="/book" className="btn bg-white !px-6 text-navy-950 hover:bg-navy-100">
-            Book online <ArrowRight className="h-4 w-4" aria-hidden />
+          <Link href="/book" className="btn-ghost-light !px-7 !py-4 text-base">
+            Book online <ArrowRight className="h-5 w-5" aria-hidden />
           </Link>
         </div>
       </div>

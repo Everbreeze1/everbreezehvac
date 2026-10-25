@@ -7,6 +7,7 @@ export type Service = {
   icon: "snowflake" | "flame" | "leaf" | "wrench" | "calendar" | "wind" | "building" | "droplet";
   image: string;
   imageAlt?: string;
+  offer?: { label: string; amount: string };
   signs: { title: string; signsLead: string; items: string[] };
   includes: string[];
   faqs: { q: string; a: string }[];
@@ -118,6 +119,7 @@ export const services: Service[] = [
       "A heat pump replaces both your furnace and your air conditioner with one quiet, efficient system. As a SMUD participating contractor, we handle the rebate paperwork for you, so the savings show up on your project, not months later.",
     icon: "leaf",
     image: "/images/ducted-heat-pump.webp",
+    offer: { label: "SMUD rebate", amount: "Up to $3,000" },
     signs: {
       title: "Is a heat pump right for you?",
       signsLead: "A heat pump is a great fit if:",
@@ -166,6 +168,7 @@ export const services: Service[] = [
     icon: "droplet",
     image: "/images/bradford-white-heat-pump-water-heater.webp",
     imageAlt: "Bradford White AeroTherm heat pump water heater",
+    offer: { label: "SMUD rebate", amount: "Up to $4,000" },
     signs: {
       title: "Is it time for a heat pump water heater?",
       signsLead: "It's a great fit if:",

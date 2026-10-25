@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone, ShieldCheck, Clock } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { MobileMenu } from "./MobileMenu";
+import { BookButton } from "@/components/BookButton";
 
 export function Header() {
   return (
@@ -48,9 +49,7 @@ export function Header() {
               {site.phone}
             </span>
           </a>
-          <Link href="/book" className="btn-primary ml-2 hidden !py-2.5 sm:inline-flex">
-            Book online
-          </Link>
+          <BookButton className="btn-primary ml-2 hidden !py-2.5 sm:inline-flex">Book online</BookButton>
           <MobileMenu />
         </div>
       </div>

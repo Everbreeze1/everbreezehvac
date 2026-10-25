@@ -35,6 +35,14 @@ function bookableDays() {
   return { now, days };
 }
 
+// "8–10 AM", "10 AM–12 PM": short enough for two columns on a phone.
+function shortWindow(start: number) {
+  const end = start + 2;
+  const h = (n: number) => (n % 12 === 0 ? 12 : n % 12);
+  const ap = (n: number) => (n < 12 ? "AM" : "PM");
+  return ap(start) === ap(end) ? `${h(start)}–${h(end)} ${ap(end)}` : `${h(start)} ${ap(start)}–${h(end)} ${ap(end)}`;
+}
+
 const noopSubscribe = () => () => {};
 
 const PART_OF_DAY = (start: number) => (start < 12 ? { label: "Morning", Icon: Sunrise } : start < 16 ? { label: "Afternoon", Icon: Sun } : { label: "Evening", Icon: Moon });
@@ -208,7 +216,7 @@ export function BookingForm({ defaultService }: { defaultService?: string }) {
                   <Icon className={`h-5 w-5 shrink-0 ${on ? "text-brand-dark" : "text-muted"}`} aria-hidden />
                   <span className="min-w-0">
                     <span className="block text-[11px] font-bold tracking-wider text-muted uppercase">{label}</span>
-                    <span className="block text-sm font-semibold whitespace-nowrap">{w.label}</span>
+                    <span className="block text-sm font-semibold whitespace-nowrap">{shortWindow(w.start)}</span>
                   </span>
                 </label>
               );

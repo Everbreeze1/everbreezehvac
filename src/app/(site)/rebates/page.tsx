@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { QuoteForm } from "@/components/QuoteForm";
+import { ArrowRight, Phone } from "lucide-react";
+import { BookButton } from "@/components/BookButton";
 import { CheckList, CtaBand, FaqList, SectionHeading } from "@/components/ui";
 import { JsonLd, faqSchema } from "@/components/JsonLd";
 import { rebateTiers, waterHeaterRebates } from "@/lib/faqs";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "SMUD Heat Pump Rebates up to $3,000 | Everbreeze Heating And Air®",
@@ -47,7 +48,30 @@ export default function RebatesPage() {
               <Link href="/financing" className="text-sm font-bold text-brand underline underline-offset-4">Pair it with financing</Link>
             </div>
           </div>
-          <QuoteForm defaultService="Heat Pumps" title="Check your rebate" subtitle="Tell us a bit about your home and we'll confirm what you qualify for. The consult is free." />
+          <div className="rounded-2xl bg-white p-6 text-ink shadow-2xl sm:p-8">
+            <p className="eyebrow">What SMUD pays back</p>
+            <ul className="mt-4 divide-y divide-line">
+              {[
+                { amount: "$4,000", what: "Gas to heat pump water heater" },
+                { amount: "$3,000", what: "Gas furnace and AC to a heat pump" },
+                { amount: "$1,000", what: "Electric to heat pump upgrades" },
+              ].map((r) => (
+                <li key={r.what} className="flex items-baseline gap-4 py-3">
+                  <span className="w-24 shrink-0 font-display text-2xl font-extrabold text-brand-dark">{r.amount}</span>
+                  <span className="text-sm font-semibold">{r.what}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-muted">Maximum amounts. We confirm exactly what your home qualifies for at a free consult.</p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <BookButton service="Heat Pumps" className="btn-primary flex-1 !py-3.5 whitespace-nowrap">
+                Check my rebate <ArrowRight className="h-4 w-4" aria-hidden />
+              </BookButton>
+              <a href={site.phoneHref} className="btn-outline flex-1 !py-3.5 whitespace-nowrap">
+                <Phone className="h-4 w-4" aria-hidden /> {site.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Droplets, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
 import type { Service } from "@/lib/services";
 import { brands, site } from "@/lib/site";
+import { BookButton } from "@/components/BookButton";
 
 const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2, droplet: Droplets };
 
@@ -87,9 +88,9 @@ export function CtaBand({ title = "Need heating or cooling help?", text = "Talk 
           <a href={site.phoneHref} className="btn-primary !px-7 !py-4 text-base shadow-lg shadow-brand/25">
             <Phone className="h-5 w-5" aria-hidden /> {site.phone}
           </a>
-          <Link href="/book" className="btn-ghost-light !px-7 !py-4 text-base">
+          <BookButton className="btn-ghost-light !px-7 !py-4 text-base">
             Book online <ArrowRight className="h-5 w-5" aria-hidden />
-          </Link>
+          </BookButton>
         </div>
       </div>
     </section>

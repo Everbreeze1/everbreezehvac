@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Phone } from "lucide-react";
-import { QuoteForm } from "@/components/QuoteForm";
+import { ArrowRight, BadgeDollarSign, Clock, Phone, ShieldCheck } from "lucide-react";
+import { Accreditations } from "@/components/Accreditations";
+import { BookButton } from "@/components/BookButton";
 import { RatingBadge, Reviews } from "@/components/Reviews";
 import { CheckList, CtaBand, FaqList, LogoStrip, ServiceCard } from "@/components/ui";
 import { JsonLd, breadcrumbSchema, faqSchema } from "@/components/JsonLd";
@@ -11,6 +12,12 @@ import { getService, services } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export const revalidate = 21600;
+
+const promises = [
+  { Icon: BadgeDollarSign, text: "Upfront price first" },
+  { Icon: ShieldCheck, text: "Licensed & insured" },
+  { Icon: Clock, text: "Callback same business day" },
+];
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -68,12 +75,38 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <a href={site.phoneHref} className="btn-primary !px-7 !py-4">
                 <Phone className="h-5 w-5" aria-hidden /> Call {site.phone}
               </a>
-              <Link href="/book" className="btn-ghost-light !px-7 !py-4">
+              <BookButton service={service.name} className="btn-ghost-light !px-7 !py-4">
                 Book online <ArrowRight className="h-5 w-5" aria-hidden />
-              </Link>
+              </BookButton>
             </div>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/85">
+              {promises.map(({ Icon, text }) => (
+                <li key={text} className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 shrink-0 text-brand" aria-hidden /> {text}
+                </li>
+              ))}
+            </ul>
           </div>
-          <QuoteForm defaultService={service.name} title={`Ask about ${service.name}`} />
+          <div className="relative pb-6 lg:pb-0">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-white/10">
+              <Image
+                src={service.image}
+                alt={service.imageAlt ?? `${service.name} by Everbreeze Heating And Air`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            {service.offer ? (
+              <div className="absolute -bottom-1 left-4 rounded-xl bg-brand px-5 py-3 text-navy-950 shadow-xl sm:left-6 lg:-bottom-6">
+                <p className="text-[11px] font-bold tracking-wider uppercase">{service.offer.label}</p>
+                <p className="font-display text-2xl font-extrabold">{service.offer.amount}</p>
+              </div>
+            ) : (
+              <Accreditations size="sm" className="absolute -bottom-1 left-4 sm:left-6 lg:-bottom-5" />
+            )}
+          </div>
         </div>
       </section>
 
@@ -84,8 +117,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <p className="mt-3 text-muted">{service.signs.signsLead}</p>
             <CheckList items={service.signs.items} className="mt-6" />
           </div>
-          <div className="relative min-h-72 overflow-hidden rounded-2xl">
-            <Image src={service.image} alt={service.imageAlt ?? `${service.name} by Everbreeze Heating And Air`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+          <div className="relative self-start overflow-hidden rounded-2xl bg-navy-900 p-8 text-white shadow-xl">
+            <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 h-56 w-56 rounded-full bg-brand/25 blur-3xl" />
+            <p className="eyebrow relative !text-brand">Sound familiar?</p>
+            <h3 className="relative mt-2 text-2xl font-extrabold">Let a licensed tech take a look</h3>
+            <p className="relative mt-3 leading-relaxed text-white/75">
+              Pick a day and arrival window online, or call and talk to a real person. You&apos;ll get a clear price before any work starts.
+            </p>
+            <div className="relative mt-6 flex flex-col gap-3 sm:flex-row">
+              <BookButton service={service.name} className="btn-primary !px-6 !py-3.5">
+                Book online <ArrowRight className="h-4 w-4" aria-hidden />
+              </BookButton>
+              <a href={site.phoneHref} className="btn-ghost-light !px-6 !py-3.5">
+                <Phone className="h-4 w-4" aria-hidden /> {site.phone}
+              </a>
+            </div>
+            <Accreditations size="sm" className="relative mt-6" />
           </div>
         </div>
       </section>

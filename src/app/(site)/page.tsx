@@ -24,6 +24,7 @@ import { areas } from "@/lib/areas";
 import { generalFaqs, rebateTiers } from "@/lib/faqs";
 import { services } from "@/lib/services";
 import { site, workPhotos } from "@/lib/site";
+import { BookButton } from "@/components/BookButton";
 
 export const revalidate = 21600;
 
@@ -41,7 +42,7 @@ const offers = [
     title: "AC & furnace tune-up",
     text: "Get your system ready for the season with a discounted tune-up. Fewer breakdowns, lower bills.",
     cta: "Book a tune-up",
-    href: "/book?service=Maintenance%20%26%20Tune-Ups",
+    book: "Maintenance & Tune-Ups",
   },
   {
     icon: CalendarCheck,
@@ -49,7 +50,7 @@ const offers = [
     title: "Maintenance plan savings",
     text: "Two visits a year, priority scheduling, and savings on parts and labor when you need a repair.",
     cta: "Ask about plans",
-    href: "/book?service=Maintenance%20%26%20Tune-Ups",
+    book: "Maintenance & Tune-Ups",
   },
   {
     icon: BadgeDollarSign,
@@ -102,9 +103,9 @@ export default function Home() {
               <a href={site.phoneHref} className="btn-primary !px-7 !py-4 text-base shadow-lg shadow-brand/25">
                 <PhoneCall className="h-5 w-5" aria-hidden /> Call {site.phone}
               </a>
-              <Link href="/book" className="btn-ghost-light !px-7 !py-4 text-base backdrop-blur">
+              <BookButton className="btn-ghost-light !px-7 !py-4 text-base backdrop-blur">
                 Book online <ArrowRight className="h-5 w-5" aria-hidden />
-              </Link>
+              </BookButton>
             </div>
             <Accreditations size="md" className="mt-10" />
           </div>
@@ -140,23 +141,23 @@ export default function Home() {
               All services <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
               <ServiceCard key={s.slug} service={s} />
             ))}
-            <Link
-              href="/book"
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-navy-900 p-6 text-white transition hover:-translate-y-0.5 hover:shadow-xl"
+            <BookButton
+              service="Not sure"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-navy-900 p-6 text-left text-white transition hover:-translate-y-0.5 hover:shadow-xl"
             >
-              <div aria-hidden className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-brand/25 blur-2xl" />
-              <div className="relative">
-                <h3 className="text-lg font-bold">Not sure what you need?</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/75">Describe the problem and we&apos;ll figure it out together.</p>
-              </div>
+              <span aria-hidden className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-brand/25 blur-2xl" />
+              <span className="relative block">
+                <span className="block font-display text-lg font-bold">Not sure what you need?</span>
+                <span className="mt-1.5 block text-sm leading-relaxed text-white/75">Describe the problem and we&apos;ll figure it out together.</span>
+              </span>
               <span className="relative mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand">
                 Book a visit <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
               </span>
-            </Link>
+            </BookButton>
           </div>
         </div>
       </section>
@@ -183,9 +184,15 @@ export default function Home() {
                 </div>
                 <h3 className="mt-5 text-xl font-extrabold">{o.title}</h3>
                 <p className={`mt-2 flex-1 leading-relaxed ${i === 2 ? "text-white/75" : "text-muted"}`}>{o.text}</p>
-                <Link href={o.href} className={`mt-6 ${i === 2 ? "btn-primary" : "btn-dark"} self-start`}>
-                  {o.cta} <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                {"book" in o ? (
+                  <BookButton service={o.book} className="btn-dark mt-6 self-start">
+                    {o.cta} <ArrowRight className="h-4 w-4" aria-hidden />
+                  </BookButton>
+                ) : (
+                  <Link href={o.href} className={`mt-6 ${i === 2 ? "btn-primary" : "btn-dark"} self-start`}>
+                    {o.cta} <ArrowRight className="h-4 w-4" aria-hidden />
+                  </Link>
+                )}
               </article>
             ))}
           </div>

@@ -88,7 +88,7 @@ export default function Home() {
         <div className="container-page relative grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
           <div className="animate-rise">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold tracking-wider text-white uppercase ring-1 ring-white/20 backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-brand shadow-[0_0_0_4px_rgba(46,199,84,0.25)]" /> Sacramento heating &amp; air
+              <span className="h-2 w-2 rounded-full bg-brand shadow-[0_0_0_4px_rgba(46,199,84,0.25)]" /> {site.tagline}
             </p>
             <h1 className="mt-5 text-4xl leading-[1.05] font-extrabold sm:text-5xl lg:text-[4rem]">
               HVAC pros you can <span className="text-brand">trust</span>, right here in Sacramento.

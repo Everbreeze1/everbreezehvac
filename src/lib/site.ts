@@ -26,8 +26,11 @@ export const site = {
   // Profiles Google uses to connect the site to the business. TODO(Jon): paste the real links.
   social: {
     googleBusiness: "https://www.google.com/search?q=Everbreeze+Heating+and+Air&stick=H4sIAAAAAAAA_-NgU1I1qLAwsExMNkxMSrMwSTFLtTC2MqhIMTJIsjQF8i1TTVLNLZMXsUq5lqUWJRWlplalKnikJpZk5qUrJOalKDhmFgEA62yb3EYAAAA" as string | null, // Google Business Profile
-    facebook: null as string | null,
-    instagram: null as string | null,
+    facebook: "https://www.facebook.com/profile.php?id=61573230246426" as string | null,
+    instagram: "https://www.instagram.com/everbreezeheatingandair/" as string | null,
+    tiktok: "https://www.tiktok.com/@everbreezehvac" as string | null,
+    linkedin: "https://www.linkedin.com/company/everbreezeheatingandair/" as string | null,
+    youtube: "https://www.youtube.com/@everbreezeheatingandair" as string | null,
     yelp: null as string | null,
     nextdoor: null as string | null,
   },

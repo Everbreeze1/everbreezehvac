@@ -6,6 +6,7 @@ export type Service = {
   intro: string;
   icon: "snowflake" | "flame" | "leaf" | "wrench" | "calendar" | "wind" | "building" | "droplet";
   image: string;
+  imageAlt?: string;
   signs: { title: string; signsLead: string; items: string[] };
   includes: string[];
   faqs: { q: string; a: string }[];
@@ -163,7 +164,8 @@ export const services: Service[] = [
     intro:
       "A heat pump water heater pulls heat from the air around it instead of burning gas, so it uses a fraction of the energy of a standard tank. We size it for your household, handle the electrical and venting details, and file the SMUD rebate paperwork for you.",
     icon: "droplet",
-    image: "/images/heat-pump-water-heater.webp",
+    image: "/images/bradford-white-heat-pump-water-heater.webp",
+    imageAlt: "Bradford White AeroTherm heat pump water heater",
     signs: {
       title: "Is it time for a heat pump water heater?",
       signsLead: "It's a great fit if:",

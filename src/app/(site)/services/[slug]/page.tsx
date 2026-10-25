@@ -85,7 +85,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <CheckList items={service.signs.items} className="mt-6" />
           </div>
           <div className="relative min-h-72 overflow-hidden rounded-2xl">
-            <Image src={service.image} alt={`${service.name} by Everbreeze Heating And Air`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            <Image src={service.image} alt={service.imageAlt ?? `${service.name} by Everbreeze Heating And Air`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
         </div>
       </section>

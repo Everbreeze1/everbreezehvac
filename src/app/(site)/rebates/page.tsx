@@ -52,8 +52,8 @@ export default function RebatesPage() {
             <p className="eyebrow">What SMUD pays back</p>
             <ul className="mt-4 divide-y divide-line">
               {[
-                { amount: "$4,000", what: "Gas to heat pump water heater" },
                 { amount: "$3,000", what: "Gas furnace and AC to a heat pump" },
+                { amount: "$1,600", what: "Gas to heat pump water heater" },
                 { amount: "$1,000", what: "Electric to heat pump upgrades" },
               ].map((r) => (
                 <li key={r.what} className="flex items-baseline gap-4 py-3">
@@ -90,7 +90,7 @@ export default function RebatesPage() {
           <div className="mt-12 grid items-center gap-8 overflow-hidden rounded-3xl bg-navy-900 p-7 text-white sm:p-10 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <p className="eyebrow !text-brand">Heat pump water heaters</p>
-              <h3 className="mt-2 text-2xl font-extrabold sm:text-3xl">Up to $4,000 back on your water heater too</h3>
+              <h3 className="mt-2 text-2xl font-extrabold sm:text-3xl">Up to $1,600 back on your water heater too</h3>
               <p className="mt-3 text-white/75">SMUD&apos;s biggest rebate right now is for swapping a gas water heater for a heat pump model. We install it and file the paperwork.</p>
               <Link href="/services/heat-pump-water-heaters" className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand hover:underline">
                 About heat pump water heaters <span aria-hidden>→</span>

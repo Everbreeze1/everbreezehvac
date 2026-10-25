@@ -124,7 +124,7 @@ export const serviceGuides: Record<string, ServiceGuide> = {
       {
         heading: "SMUD water heater rebates",
         paragraphs: [
-          "SMUD currently offers up to $4,000 when you replace a gas water heater with a heat pump water heater, and $1,000 when you replace an electric one. We handle the paperwork for you and confirm what you qualify for at your estimate. Amounts are set by SMUD and can change.",
+          "SMUD currently offers up to $1,600 when you replace a gas water heater with a heat pump water heater, and $1,000 when you replace an electric one. We handle the paperwork for you and confirm what you qualify for at your estimate. Amounts are set by SMUD and can change.",
         ],
       },
       {

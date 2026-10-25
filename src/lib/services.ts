@@ -162,7 +162,7 @@ export const services: Service[] = [
   {
     slug: "heat-pump-water-heaters",
     name: "Heat Pump Water Heaters",
-    short: "Efficient heat pump water heater installs, with up to $4,000 back from SMUD.",
+    short: "Efficient heat pump water heater installs, with up to $1,600 back from SMUD.",
     headline: "Heat pump water heaters, installed right, with SMUD rebates",
     intro:
       "A heat pump water heater pulls heat from the air around it instead of burning gas, so it uses a fraction of the energy of a standard tank. We size it for your household, handle the electrical and venting details, and file the SMUD rebate paperwork for you.",
@@ -170,7 +170,7 @@ export const services: Service[] = [
     image: "/images/bradford-white-heat-pump-water-heater.webp",
     imageAlt: "Bradford White AeroTherm heat pump water heater",
     imageFit: "contain",
-    offer: { label: "SMUD rebate", amount: "Up to $4,000" },
+    offer: { label: "SMUD rebate", amount: "Up to $1,600" },
     signs: {
       title: "Is it time for a heat pump water heater?",
       signsLead: "It's a great fit if:",
@@ -194,7 +194,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "How much is the SMUD rebate for a heat pump water heater?",
-        a: "SMUD currently offers up to $4,000 when you replace a gas water heater with a heat pump water heater, and $1,000 when you replace an electric water heater. Amounts are set by SMUD and can change, so we confirm what you qualify for at your estimate.",
+        a: "SMUD currently offers up to $1,600 when you replace a gas water heater with a heat pump water heater, and $1,000 when you replace an electric water heater. Amounts are set by SMUD and can change, so we confirm what you qualify for at your estimate.",
       },
       {
         q: "Will a heat pump water heater keep up with my family?",
@@ -207,7 +207,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Heat Pump Water Heater Installation Sacramento | SMUD Rebates | Everbreeze",
     metaDescription:
-      "Heat pump water heater installation in Sacramento with up to $4,000 in SMUD rebates for gas-to-electric conversions. We handle the paperwork. Book a free estimate.",
+      "Heat pump water heater installation in Sacramento with up to $1,600 in SMUD rebates for gas-to-electric conversions. We handle the paperwork. Book a free estimate.",
   },
   {
     slug: "installation",

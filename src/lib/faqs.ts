@@ -36,6 +36,6 @@ export const rebateTiers = [
 ];
 
 export const waterHeaterRebates = [
-  { amount: "$4,000", title: "Gas to heat pump water heater", text: "Replace a gas water heater with a qualifying heat pump water heater." },
+  { amount: "$1,600", title: "Gas to heat pump water heater", text: "Replace a gas water heater with a qualifying heat pump water heater." },
   { amount: "$1,000", title: "Electric to heat pump water heater", text: "Replace an existing electric water heater with a heat pump model." },
 ];

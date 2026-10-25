@@ -23,6 +23,14 @@ export const site = {
   financingUrl: "https://www.avvance.com/flexible-financing.html?id=783171c6",
   // TODO(Jon): swap in the direct link to the BBB profile page.
   bbbUrl: "https://www.bbb.org/search?find_text=Everbreeze%20Heating%20and%20Air&find_loc=Sacramento%2C%20CA",
+  // Profiles Google uses to connect the site to the business. TODO(Jon): paste the real links.
+  social: {
+    googleBusiness: null as string | null, // the "Share" link from your Google Business Profile
+    facebook: null as string | null,
+    instagram: null as string | null,
+    yelp: null as string | null,
+    nextdoor: null as string | null,
+  },
   googleReviewsUrl: "https://www.google.com/search?q=Everbreeze+Heating+and+Air+Reviews",
   analytics: {
     ga4: "G-B2NML1G80R",

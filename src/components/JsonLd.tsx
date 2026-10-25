@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { areas } from "@/lib/areas";
+import { services } from "@/lib/services";
 
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
@@ -11,6 +12,8 @@ export function localBusinessSchema() {
     "@type": "HVACBusiness",
     "@id": `${site.url}/#business`,
     name: site.name,
+    slogan: site.tagline,
+    description: site.description,
     url: site.url,
     telephone: "+1-866-383-7273",
     email: site.email,
@@ -26,6 +29,15 @@ export function localBusinessSchema() {
       addressCountry: "US",
     },
     areaServed: areas.map((a) => ({ "@type": "City", name: `${a.name}, CA` })),
+    sameAs: Object.values(site.social).filter(Boolean),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "HVAC services",
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.name, url: `${site.url}/services/${s.slug}` },
+      })),
+    },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

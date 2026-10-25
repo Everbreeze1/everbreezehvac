@@ -8,6 +8,7 @@ import { RatingBadge, Reviews } from "@/components/Reviews";
 import { CtaBand, ServiceCard } from "@/components/ui";
 import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
 import { areas, getArea } from "@/lib/areas";
+import { getServiceGuide } from "@/lib/service-guides";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -20,9 +21,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const area = getArea((await params).city);
   if (!area) return {};
-  const title = `HVAC Repair & Installation in ${area.name}, CA | Everbreeze`;
-  const description = `AC repair, furnace service and heat pump installation in ${area.name}. Licensed technicians, upfront pricing and 24/7 emergency service from Everbreeze Heating And Air®.`;
-  return { title, description, alternates: { canonical: `/service-areas/${area.slug}` }, openGraph: { title, description } };
+  const title = `AC Repair, Heating & HVAC in ${area.name}, CA | Everbreeze`;
+  const description = `AC repair, furnace repair and heat pump installation in ${area.name}, CA. Licensed technicians, upfront pricing and 24/7 emergency service from Everbreeze Heating And Air®.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/service-areas/${area.slug}` },
+    openGraph: { type: "website", siteName: site.name, title, description, url: `/service-areas/${area.slug}` },
+  };
 }
 
 export default async function AreaPage({ params }: { params: Promise<{ city: string }> }) {
@@ -31,11 +37,30 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
   return (
     <>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Service areas", path: "/service-areas" },
-          { name: area.name, path: `/service-areas/${area.slug}` },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Service areas", path: "/service-areas" },
+            { name: area.name, path: `/service-areas/${area.slug}` },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: `Heating and air conditioning in ${area.name}, CA`,
+            serviceType: "HVAC repair, installation and maintenance",
+            url: `${site.url}/service-areas/${area.slug}`,
+            provider: { "@id": `${site.url}/#business` },
+            areaServed: { "@type": "City", name: `${area.name}, CA` },
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: `HVAC services in ${area.name}`,
+              itemListElement: services.map((s) => ({
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: s.name, url: `${site.url}/services/${s.slug}` },
+              })),
+            },
+          },
+        ]}
       />
       <section className="relative overflow-hidden bg-navy-900 text-white">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_30rem_at_90%_-10%,rgba(46,199,84,0.22),transparent)]" />
@@ -71,6 +96,18 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
               <ServiceCard key={s.slug} service={s} />
             ))}
           </div>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {services.map((s) => {
+              const keyword = getServiceGuide(s.slug)?.keyword ?? s.name;
+              return (
+                <li key={s.slug}>
+                  <Link href={`/services/${s.slug}`} className="font-semibold text-brand-dark hover:underline">
+                    {keyword.charAt(0).toUpperCase() + keyword.slice(1)} in {area.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 

@@ -30,7 +30,7 @@ export const revalidate = 21600;
 
 const highlights = [
   { icon: ShieldCheck, title: "Licensed & insured", text: "Background-checked technicians" },
-  { icon: Clock, title: "24/7 emergency service", text: "Real people answer, day or night" },
+  { icon: Clock, title: "Same-day callback", text: "We call back the same business day" },
   { icon: BadgeDollarSign, title: "Up to $3,000 back", text: "SMUD heat pump rebates, filed for you" },
   { icon: Award, title: "Satisfaction guaranteed", text: "We're not done until you're comfortable" },
 ];
@@ -64,7 +64,7 @@ const offers = [
 
 const promises = [
   { icon: BadgeDollarSign, title: "Upfront pricing", text: "You approve the price before any work starts. No surprise line items." },
-  { icon: Clock, title: "24/7 emergency service", text: "AC out in a heat wave? Furnace dead on a cold night? Call any time." },
+  { icon: Clock, title: "Easy scheduling", text: "Pick a day and arrival window online in under a minute, or call and talk to a real person." },
   { icon: ShieldCheck, title: "Licensed & insured", text: "Background-checked technicians who treat your home with respect." },
   { icon: Sparkles, title: "SMUD rebates handled", text: "As a SMUD participating contractor, we file the paperwork for you." },
 ];
@@ -94,7 +94,7 @@ export default function Home() {
               HVAC pros you can <span className="text-brand">trust</span>, right here in Sacramento.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
-              AC repair, furnace service and heat pump installs from licensed technicians. Upfront prices, 24/7 emergency help, and SMUD rebates handled for you.
+              AC repair, furnace service and heat pump installs from licensed technicians. Upfront prices, easy online booking, and SMUD rebates handled for you.
             </p>
             <div className="mt-6">
               <RatingBadge dark />

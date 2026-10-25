@@ -82,7 +82,7 @@ export function CtaBand({ title = "Need heating or cooling help?", text = "Talk 
         <div>
           <h2 className="text-3xl font-extrabold sm:text-4xl">{title}</h2>
           <p className="mt-2 text-lg text-white/80">{text}</p>
-          <p className="mt-3 text-sm text-white/60">Mon–Fri 8–6 · Sat 9–4 · Emergencies 24/7</p>
+          <p className="mt-3 text-sm text-white/60">Mon–Fri 8–6 · Sat 9–4</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <a href={site.phoneHref} className="btn-primary !px-7 !py-4 text-base shadow-lg shadow-brand/25">

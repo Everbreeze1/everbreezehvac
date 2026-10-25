@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Service Areas | Everbreeze Heating And Air® Sacramento",
-  description: "Everbreeze serves Sacramento, Elk Grove, Rancho Cordova, Citrus Heights, Carmichael, Roseville, Folsom and West Sacramento.",
+  description: "Everbreeze serves Sacramento, Elk Grove, Rancho Cordova, Citrus Heights, Carmichael, Roseville, Folsom, West Sacramento and Davis.",
   alternates: { canonical: "/service-areas" },
 };
 
@@ -20,7 +20,7 @@ export default function AreasPage() {
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-stretch">
           <div>
             <p className="eyebrow">Where we work</p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight">Local techs across Sacramento County and Placer County</h2>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight">Local techs across Sacramento, Placer and Yolo counties</h2>
             <p className="mt-3 text-muted">We&apos;re based in {site.city}, so most of these cities are a short drive. Pick yours to see local details and rebates.</p>
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {areas.map((a) => (

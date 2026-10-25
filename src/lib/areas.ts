@@ -72,6 +72,14 @@ export const areas: Area[] = [
       "We serve homes and businesses across West Sacramento, including the newer Bridge District and Southport developments.",
     neighborhoods: ["Southport", "Bridge District", "Bryte", "Broderick"],
   },
+  {
+    slug: "davis",
+    name: "Davis",
+    utility: "PG&E",
+    blurb:
+      "Davis summers get hot and the city is serious about energy efficiency. We help homeowners and rentals near campus keep cool, cut bills and move to all-electric heat pumps.",
+    neighborhoods: ["Downtown", "North Davis", "South Davis", "East Davis", "West Davis", "Mace Ranch", "Wildhorse"],
+  },
 ];
 
 export const getArea = (slug: string) => areas.find((a) => a.slug === slug);

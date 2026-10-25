@@ -1,7 +1,7 @@
 export const generalFaqs = [
   {
     q: "What areas do you serve?",
-    a: "Sacramento and the surrounding area, including Elk Grove, Rancho Cordova, Citrus Heights, Carmichael, Roseville, Folsom and West Sacramento. If you're nearby and don't see your city, call us.",
+    a: "Sacramento and the surrounding area, including Elk Grove, Rancho Cordova, Citrus Heights, Carmichael, Roseville, Folsom, West Sacramento and Davis. If you're nearby and don't see your city, call us.",
   },
   {
     q: "Do you offer 24/7 emergency service?",

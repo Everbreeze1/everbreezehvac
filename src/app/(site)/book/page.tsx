@@ -15,7 +15,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
   return (
     <section className="bg-surface py-10 sm:py-16">
       <div className="container-page grid gap-10 lg:grid-cols-[1fr_20rem]">
-        <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-line sm:p-8">
+        <div className="min-w-0 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-line sm:p-8">
           <h1 className="text-3xl font-extrabold sm:text-4xl">Book a service visit</h1>
           <p className="mt-2 text-muted">Pick a day and arrival window. We&apos;ll call to confirm the same business day.</p>
           <div className="mt-8">

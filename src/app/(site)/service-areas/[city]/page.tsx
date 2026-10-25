@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin } from "lucide-react";
-import { QuoteForm } from "@/components/QuoteForm";
-import { Reviews } from "@/components/Reviews";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
+import { BookButton } from "@/components/BookButton";
+import { MapEmbed } from "@/components/MapEmbed";
+import { RatingBadge, Reviews } from "@/components/Reviews";
 import { CtaBand, ServiceCard } from "@/components/ui";
 import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
 import { areas, getArea } from "@/lib/areas";
 import { services } from "@/lib/services";
+import { site } from "@/lib/site";
 
 export const revalidate = 21600;
 
@@ -45,8 +47,19 @@ export default async function AreaPage({ params }: { params: Promise<{ city: str
             <h1 className="mt-4 text-4xl leading-tight font-extrabold sm:text-5xl">Heating &amp; air conditioning in {area.name}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">{area.blurb}</p>
             <p className="mt-6 text-sm text-white/70">Neighborhoods we serve include {area.neighborhoods.join(", ")}.</p>
+            <div className="mt-6">
+              <RatingBadge dark />
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href={site.phoneHref} className="btn-primary !px-7 !py-4">
+                <Phone className="h-5 w-5" aria-hidden /> Call {site.phone}
+              </a>
+              <BookButton className="btn-ghost-light !px-7 !py-4">
+                Book online <ArrowRight className="h-5 w-5" aria-hidden />
+              </BookButton>
+            </div>
           </div>
-          <QuoteForm title={`Get HVAC help in ${area.name}`} />
+          <MapEmbed query={`${area.name}, CA`} zoom={12} title={`Map of ${area.name}, CA`} className="h-72 ring-1 ring-white/10 sm:h-96" />
         </div>
       </section>
 

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
+import { ArrowRight, Building2, CalendarCheck, CheckCircle2, ChevronDown, Droplets, Flame, Leaf, Phone, Snowflake, Wind, Wrench } from "lucide-react";
 import type { Service } from "@/lib/services";
-import { brands, clients, site } from "@/lib/site";
+import { brands, site } from "@/lib/site";
+import { BookButton } from "@/components/BookButton";
 
-const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2 };
+const icons = { snowflake: Snowflake, flame: Flame, leaf: Leaf, wrench: Wrench, calendar: CalendarCheck, wind: Wind, building: Building2, droplet: Droplets };
 
 export function ServiceIcon({ name, className }: { name: Service["icon"]; className?: string }) {
   const Icon = icons[name];
@@ -12,18 +13,29 @@ export function ServiceIcon({ name, className }: { name: Service["icon"]; classN
 }
 
 export function ServiceCard({ service }: { service: Service }) {
+  const contain = service.imageFit === "contain";
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand hover:shadow-lg"
+      className="group reveal relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl bg-navy-900 shadow-lg ring-1 ring-black/5 transition hover:-translate-y-1 hover:shadow-2xl sm:min-h-96"
     >
-      <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-dark transition group-hover:bg-brand group-hover:text-navy-950">
-        <ServiceIcon name={service.icon} className="h-6 w-6" />
-      </span>
-      <h3 className="mt-4 text-lg font-bold">{service.name}</h3>
-      <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted">{service.short}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-dark">
-        Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
+      <Image
+        src={service.image}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className={`transition duration-500 group-hover:scale-105 ${contain ? "bg-white object-contain object-top p-6 pb-28" : "object-cover"}`}
+      />
+      <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-transparent" />
+      <span className="relative p-6">
+        <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand text-navy-950 shadow-lg">
+          <ServiceIcon name={service.icon} className="h-5 w-5" />
+        </span>
+        <h3 className="mt-3 text-xl font-extrabold text-white sm:text-2xl">{service.name}</h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-white/80 sm:text-base">{service.short}</p>
+        <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand">
+          Learn more <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden />
+        </span>
       </span>
     </Link>
   );
@@ -35,7 +47,7 @@ export function CheckList({ items, className = "" }: { items: string[]; classNam
       {items.map((item) => (
         <li key={item} className="flex gap-3">
           <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-dark" aria-hidden />
-          <span className="text-[15px] leading-relaxed">{item}</span>
+          <span className="text-[0.9375rem] leading-relaxed">{item}</span>
         </li>
       ))}
     </ul>
@@ -74,30 +86,32 @@ export function PageHero({ eyebrow, title, intro, children }: { eyebrow?: string
 
 export function CtaBand({ title = "Need heating or cooling help?", text = "Talk to a real person. We'll get you on the schedule fast." }: { title?: string; text?: string }) {
   return (
-    <section className="bg-brand">
-      <div className="container-page flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
+    <section className="relative isolate overflow-hidden bg-navy-950 text-white">
+      <Image src="/images/sacramento.webp" alt="" fill sizes="100vw" className="-z-10 object-cover opacity-20" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(40rem_20rem_at_100%_50%,rgba(46,199,84,0.30),transparent)]" />
+      <div className="container-page flex flex-col items-start justify-between gap-8 py-14 sm:py-16 md:flex-row md:items-center">
         <div>
-          <h2 className="text-2xl font-extrabold text-navy-950 sm:text-3xl">{title}</h2>
-          <p className="mt-2 text-navy-900/80">{text}</p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">{title}</h2>
+          <p className="mt-2 text-lg text-white/80">{text}</p>
+          <p className="mt-3 text-sm text-white/60">Mon–Fri 8–6 · Sat 9–4</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <a href={site.phoneHref} className="btn-dark !px-6">
-            <Phone className="h-4 w-4" aria-hidden /> {site.phone}
+          <a href={site.phoneHref} className="btn-primary !px-7 !py-4 text-base shadow-lg shadow-brand/25">
+            <Phone className="h-5 w-5" aria-hidden /> {site.phone}
           </a>
-          <Link href="/book" className="btn bg-white !px-6 text-navy-950 hover:bg-navy-100">
-            Book online <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          <BookButton className="btn-ghost-light !px-7 !py-4 text-base">
+            Book online <ArrowRight className="h-5 w-5" aria-hidden />
+          </BookButton>
         </div>
       </div>
     </section>
   );
 }
 
-export function LogoStrip({ kind }: { kind: "clients" | "brands" }) {
-  const items = kind === "clients" ? clients : brands;
+export function LogoStrip() {
   return (
     <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-      {items.map((it) => (
+      {brands.map((it) => (
         <li key={it.name} className="relative h-10 w-28 opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0">
           <Image src={it.logo} alt={it.name} fill sizes="112px" className="object-contain" />
         </li>

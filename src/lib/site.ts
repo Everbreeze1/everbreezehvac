@@ -3,7 +3,7 @@ export const site = {
   name: "Everbreeze Heating And Air®",
   shortName: "Everbreeze",
   url: "https://www.everbreezehvac.com",
-  tagline: "Sacramento heating & air conditioning, done right the first time.",
+  tagline: "Your Indoor Weather Experts",
   description:
     "Licensed Sacramento HVAC contractor for AC repair, furnace and heat pump service, new system installs and maintenance. SMUD participating contractor. Call or book online.",
   phone: "(866) 383-7273",
@@ -17,9 +17,12 @@ export const site = {
   postalCode: "95829",
   hours: [
     { days: "Monday – Friday", time: "8:00 AM – 6:00 PM" },
+    { days: "Saturday", time: "9:00 AM – 4:00 PM" },
     { days: "Emergencies", time: "24/7" },
   ],
   financingUrl: "https://www.avvance.com/flexible-financing.html?id=783171c6",
+  // TODO(Jon): swap in the direct link to the BBB profile page.
+  bbbUrl: "https://www.bbb.org/search?find_text=Everbreeze%20Heating%20and%20Air&find_loc=Sacramento%2C%20CA",
   googleReviewsUrl: "https://www.google.com/search?q=Everbreeze+Heating+and+Air+Reviews",
   analytics: {
     ga4: "G-B2NML1G80R",
@@ -29,21 +32,13 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Rebates", href: "/rebates" },
   { label: "Financing", href: "/financing" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-];
-
-export const clients = [
-  { name: "FedEx", logo: "/images/clients/fedex.webp" },
-  { name: "CBRE", logo: "/images/clients/cbre.webp" },
-  { name: "Sacramento County", logo: "/images/clients/sac-county.webp" },
-  { name: "Paradies Lagardère", logo: "/images/clients/paradies-lagardere.webp" },
-  { name: "Evolve", logo: "/images/clients/evolve.webp" },
-  { name: "Doorstead", logo: "/images/clients/doorstead.webp" },
 ];
 
 export const brands = [

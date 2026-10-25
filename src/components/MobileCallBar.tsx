@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { CalendarCheck, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { BookButton } from "@/components/BookButton";
 
 export function MobileCallBar() {
   return (
@@ -8,9 +8,9 @@ export function MobileCallBar() {
       <a href={site.phoneHref} className="btn-dark !py-3">
         <Phone className="h-4 w-4" aria-hidden /> Call now
       </a>
-      <Link href="/book" className="btn-primary !py-3">
+      <BookButton className="btn-primary !py-3">
         <CalendarCheck className="h-4 w-4" aria-hidden /> Book online
-      </Link>
+      </BookButton>
     </div>
   );
 }

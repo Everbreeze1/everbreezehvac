@@ -19,7 +19,7 @@ type PlacesResponse = {
 // so the site never shows placeholder reviews.
 export async function getGoogleReviews(): Promise<GoogleReviews | null> {
   const key = process.env.GOOGLE_PLACES_API_KEY;
-  const placeId = process.env.GOOGLE_PLACE_ID;
+  const placeId = process.env.GOOGLE_PLACE_ID || process.env.GOOGLE_PLACES_PLACE_ID;
   if (!key || !placeId) return null;
   try {
     const res = await fetch(`https://places.googleapis.com/v1/places/${placeId}`, {

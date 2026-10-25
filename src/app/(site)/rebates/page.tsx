@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { QuoteForm } from "@/components/QuoteForm";
+import { ArrowRight, Phone } from "lucide-react";
+import { BookButton } from "@/components/BookButton";
 import { CheckList, CtaBand, FaqList, SectionHeading } from "@/components/ui";
 import { JsonLd, faqSchema } from "@/components/JsonLd";
-import { rebateTiers } from "@/lib/faqs";
+import { rebateTiers, waterHeaterRebates } from "@/lib/faqs";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "SMUD Heat Pump Rebates up to $3,000 | Everbreeze Heating And Air®",
@@ -47,7 +48,30 @@ export default function RebatesPage() {
               <Link href="/financing" className="text-sm font-bold text-brand underline underline-offset-4">Pair it with financing</Link>
             </div>
           </div>
-          <QuoteForm defaultService="Heat Pumps" title="Check your rebate" subtitle="Tell us a bit about your home and we'll confirm what you qualify for. The consult is free." />
+          <div className="rounded-2xl bg-white p-6 text-ink shadow-2xl sm:p-8">
+            <p className="eyebrow">What SMUD pays back</p>
+            <ul className="mt-4 divide-y divide-line">
+              {[
+                { amount: "$4,000", what: "Gas to heat pump water heater" },
+                { amount: "$3,000", what: "Gas furnace and AC to a heat pump" },
+                { amount: "$1,000", what: "Electric to heat pump upgrades" },
+              ].map((r) => (
+                <li key={r.what} className="flex items-baseline gap-4 py-3">
+                  <span className="w-24 shrink-0 font-display text-2xl font-extrabold text-brand-dark">{r.amount}</span>
+                  <span className="text-sm font-semibold">{r.what}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-muted">Maximum amounts. We confirm exactly what your home qualifies for at a free consult.</p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <BookButton service="Heat Pumps" className="btn-primary flex-1 !py-3.5 whitespace-nowrap">
+                Check my rebate <ArrowRight className="h-4 w-4" aria-hidden />
+              </BookButton>
+              <a href={site.phoneHref} className="btn-outline flex-1 !py-3.5 whitespace-nowrap">
+                <Phone className="h-4 w-4" aria-hidden /> {site.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -62,6 +86,25 @@ export default function RebatesPage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted">{t.text}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-12 grid items-center gap-8 overflow-hidden rounded-3xl bg-navy-900 p-7 text-white sm:p-10 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              <p className="eyebrow !text-brand">Heat pump water heaters</p>
+              <h3 className="mt-2 text-2xl font-extrabold sm:text-3xl">Up to $4,000 back on your water heater too</h3>
+              <p className="mt-3 text-white/75">SMUD&apos;s biggest rebate right now is for swapping a gas water heater for a heat pump model. We install it and file the paperwork.</p>
+              <Link href="/services/heat-pump-water-heaters" className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand hover:underline">
+                About heat pump water heaters <span aria-hidden>→</span>
+              </Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {waterHeaterRebates.map((t) => (
+                <div key={t.title} className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+                  <p className="font-display text-4xl font-extrabold text-brand">{t.amount}</p>
+                  <h4 className="mt-2 font-bold">{t.title}</h4>
+                  <p className="mt-1 text-sm text-white/70">{t.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted">Rebate amounts are set by SMUD and can change. We confirm the exact amount for your project before you commit.</p>
         </div>

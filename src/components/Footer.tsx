@@ -30,6 +30,25 @@ export function Footer() {
           </p>
           {site.licenseNumber && <p className="mt-4 text-xs">CA License #{site.licenseNumber}</p>}
           <Accreditations size="sm" className="mt-6" />
+          <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {(
+              [
+                ["Google", site.social.googleBusiness],
+                ["Facebook", site.social.facebook],
+                ["Instagram", site.social.instagram],
+                ["Yelp", site.social.yelp],
+                ["Nextdoor", site.social.nextdoor],
+              ] as const
+            )
+              .filter(([, href]) => href)
+              .map(([label, href]) => (
+                <li key={label}>
+                  <a href={href!} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                    {label}
+                  </a>
+                </li>
+              ))}
+          </ul>
         </div>
         <div>
           <h2 className="font-display text-sm font-bold tracking-wider text-brand uppercase">Services</h2>

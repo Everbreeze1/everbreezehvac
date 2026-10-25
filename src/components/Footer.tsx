@@ -2,6 +2,7 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { Accreditations } from "@/components/Accreditations";
+import { SocialLinks } from "@/components/SocialLinks";
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { areas } from "@/lib/areas";
@@ -30,28 +31,6 @@ export function Footer() {
           </p>
           {site.licenseNumber && <p className="mt-4 text-xs">CA License #{site.licenseNumber}</p>}
           <Accreditations size="sm" className="mt-6" />
-          <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-            {(
-              [
-                ["Google", site.social.googleBusiness],
-                ["Facebook", site.social.facebook],
-                ["Instagram", site.social.instagram],
-                ["TikTok", site.social.tiktok],
-                ["LinkedIn", site.social.linkedin],
-                ["YouTube", site.social.youtube],
-                ["Yelp", site.social.yelp],
-                ["Nextdoor", site.social.nextdoor],
-              ] as const
-            )
-              .filter(([, href]) => href)
-              .map(([label, href]) => (
-                <li key={label}>
-                  <a href={href!} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                    {label}
-                  </a>
-                </li>
-              ))}
-          </ul>
         </div>
         <div>
           <h2 className="font-display text-sm font-bold tracking-wider text-brand uppercase">Services</h2>
@@ -94,6 +73,8 @@ export function Footer() {
             <li><Link href="/faq" className="hover:text-white">FAQ</Link></li>
             <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
           </ul>
+          <h2 className="mt-8 font-display text-sm font-bold tracking-wider text-brand uppercase">Follow us</h2>
+          <SocialLinks className="mt-4" />
         </div>
       </div>
       <div className="border-t border-white/10">

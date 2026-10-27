@@ -40,6 +40,11 @@ export const site = {
     googleAds: "AW-16775885852",
     leadConversion: "AW-16775885852/oT63CJ_6_tIcEJzorr8-",
   },
+  // Ondo voice agent chat widget (site-wide chat / leave a message)
+  ondoWidget: {
+    src: "https://ondovoice.com/widget.js",
+    agentId: "cmtgs6jki000610ud06e0prxv",
+  },
 } as const;
 
 export const nav = [

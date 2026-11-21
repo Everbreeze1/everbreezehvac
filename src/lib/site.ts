@@ -2,6 +2,8 @@
 export const site = {
   name: "Everbreeze Heating And Air®",
   shortName: "Everbreeze",
+  // Other names the business is listed under (CSLB, SMUD, directories). Helps AI tools match them up.
+  alternateNames: ["Everbreeze Heating and Air", "Everbreeze Heating and Air Conditioning", "Everbreeze HVAC"],
   url: "https://www.everbreezehvac.com",
   tagline: "Your Indoor Weather Experts",
   description:
@@ -34,6 +36,11 @@ export const site = {
     yelp: null as string | null,
     nextdoor: null as string | null,
   },
+  // Third-party pages that confirm the business (license lookup, SMUD contractor directory).
+  citations: [
+    "https://www.cslb.ca.gov/1114490",
+    "https://www.switchison.org/contractors/3061/everbreeze-heating-and-air-conditioning",
+  ],
   googleReviewsUrl: "https://www.google.com/search?q=Everbreeze+Heating+and+Air+Reviews",
   analytics: {
     ga4: "G-B2NML1G80R",

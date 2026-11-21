@@ -5,7 +5,7 @@ import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
 // Bump when page copy changes so Google knows to recrawl.
-const contentUpdated = "2026-10-25";
+const contentUpdated = "2026-11-20";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/services", "/rebates", "/financing", "/service-areas", "/about", "/faq", "/blog", "/book"];

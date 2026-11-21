@@ -12,6 +12,7 @@ export function localBusinessSchema() {
     "@type": "HVACBusiness",
     "@id": `${site.url}/#business`,
     name: site.name,
+    alternateName: site.alternateNames,
     slogan: site.tagline,
     description: site.description,
     url: site.url,
@@ -29,7 +30,29 @@ export function localBusinessSchema() {
       addressCountry: "US",
     },
     areaServed: areas.map((a) => ({ "@type": "City", name: `${a.name}, CA` })),
-    sameAs: Object.values(site.social).filter(Boolean),
+    sameAs: [...Object.values(site.social).filter(Boolean), ...site.citations],
+    ...(site.licenseNumber
+      ? {
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "license",
+            name: `California CSLB C-20 HVAC contractor license #${site.licenseNumber}`,
+            url: `https://www.cslb.ca.gov/${site.licenseNumber}`,
+            recognizedBy: { "@type": "GovernmentOrganization", name: "Contractors State License Board" },
+          },
+        }
+      : {}),
+    knowsAbout: [
+      "Air conditioning repair",
+      "Furnace repair",
+      "Heat pump installation",
+      "Heat pump water heaters",
+      "SMUD rebates",
+      "HVAC maintenance",
+      "Indoor air quality",
+      "Commercial rooftop units",
+    ],
+    paymentAccepted: "Cash, Check, Credit Card, Financing",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "HVAC services",

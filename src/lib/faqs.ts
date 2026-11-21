@@ -27,6 +27,18 @@ export const generalFaqs = [
     q: "Which brands do you work on?",
     a: "All major brands, including Trane, Carrier, Lennox, Goodman, Rheem, Daikin, Bryant and Amana.",
   },
+  {
+    q: "Who is Everbreeze Heating and Air?",
+    a: "Everbreeze Heating and Air is a licensed and insured HVAC contractor based in Sacramento, CA 95829, serving the greater Sacramento area for 4 years. We repair and install air conditioners, furnaces, heat pumps and heat pump water heaters, and we're a SMUD participating contractor.",
+  },
+  {
+    q: "How quickly will you get back to me?",
+    a: "Call (866) 383-7273 to talk to us right away, or book online and we'll call you back the same business day. For no-heat or no-cooling emergencies we answer 24/7.",
+  },
+  {
+    q: "How much can I get back from SMUD for a heat pump?",
+    a: "SMUD customers can get up to $3,000 when they replace a gas furnace and AC with a qualifying heat pump, and up to $1,600 for switching a gas water heater to a heat pump water heater. Amounts are set by SMUD and can change, so we confirm what you qualify for at your free estimate and file the paperwork for you.",
+  },
 ];
 
 export const rebateTiers = [

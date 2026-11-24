@@ -50,7 +50,7 @@ export const site = {
   // Ondo voice agent chat widget (site-wide chat / leave a message)
   ondoWidget: {
     src: "https://ondovoice.com/widget.js",
-    agentId: "cmtgs6jki000610ud06e0prxv",
+    agentId: "cmttostxg0003nqf0vq2zbsri",
   },
 } as const;
 

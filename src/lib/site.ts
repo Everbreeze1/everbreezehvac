@@ -49,6 +49,8 @@ export const site = {
   },
   // Ondo voice agent chat widget (site-wide chat / leave a message)
   ondoWidget: {
+    // Off while Ondo answers "Chat isn't available for this business right now" (2026-11-24). Set true to bring it back.
+    enabled: false,
     src: "https://ondovoice.com/widget.js",
     agentId: "cmttostxg0003nqf0vq2zbsri",
   },

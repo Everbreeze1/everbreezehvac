@@ -42,15 +42,19 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${site.analytics.ga4}');gtag('config','${site.analytics.googleAds}');
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="tel:"]');if(a){gtag('event','phone_click',{link_url:a.href});}});`}
       </Script>
-      {/* Ondo voice agent chat. The widget draws a small 56px emoji circle inside an open shadow root that page CSS
-          can't reach, so we append our own <style> to that root: a larger "Chat with us" pill in brand colours, a
-          gentle pulse to draw the eye, a roomier panel, and on phones we lift it above the mobile call bar. */}
-      <Script id="ondo-style" strategy="afterInteractive">
-        {`(function(){var css=${JSON.stringify(ondoCss)};
-function fix(){for(var el of document.body.children){var r=el.shadowRoot;if(r&&r.querySelector('.bubble')&&!r.querySelector('style[data-eb]')){var s=document.createElement('style');s.setAttribute('data-eb','');s.textContent=css;r.appendChild(s);return true;}}return false;}
-if(!fix()){var o=new MutationObserver(function(){if(fix())o.disconnect();});o.observe(document.body,{childList:true});}})();`}
-      </Script>
-      <Script src={site.ondoWidget.src} data-agent-id={site.ondoWidget.agentId} strategy="lazyOnload" />
+      {site.ondoWidget.enabled && (
+        <>
+          {/* Ondo voice agent chat. The widget draws a small 56px emoji circle inside an open shadow root that page CSS
+              can't reach, so we append our own <style> to that root: a larger "Chat with us" pill in brand colours, a
+              gentle pulse to draw the eye, a roomier panel, and on phones we lift it above the mobile call bar. */}
+          <Script id="ondo-style" strategy="afterInteractive">
+            {`(function(){var css=${JSON.stringify(ondoCss)};
+    function fix(){for(var el of document.body.children){var r=el.shadowRoot;if(r&&r.querySelector('.bubble')&&!r.querySelector('style[data-eb]')){var s=document.createElement('style');s.setAttribute('data-eb','');s.textContent=css;r.appendChild(s);return true;}}return false;}
+    if(!fix()){var o=new MutationObserver(function(){if(fix())o.disconnect();});o.observe(document.body,{childList:true});}})();`}
+          </Script>
+          <Script src={site.ondoWidget.src} data-agent-id={site.ondoWidget.agentId} strategy="lazyOnload" />
+        </>
+      )}
     </div>
   );
 }
